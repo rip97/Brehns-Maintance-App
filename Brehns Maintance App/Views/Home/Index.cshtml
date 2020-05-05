@@ -1,8 +1,10 @@
-﻿@{
+﻿@model Brehns_Maintance_App.Services.Analysis;
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4"> Welcome  </h1>
+    <a class="nav-link text-primary" asp-area="" asp-controller="Projects" asp-action="Index"> View Projects </a>
+
 </div>
