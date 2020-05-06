@@ -11,13 +11,13 @@ namespace Brehns_Maintance_App.Services
     {
         private readonly ApplicationDbContext _context;
 
-        private List<Project> completed;
+        private List<Project> completedItems = new List<Project>();
 
-        private List<Project> incomplete;
+        private List<Project> incompleteItems = new List<Project>();
 
-        public List<Project> Completed { get { return completed; } }
+        public List<Project> Completed { get { return completedItems; } }
 
-        public List<Project> Incomplete { get { return incomplete; } }
+        public List<Project> Incomplete { get { return incompleteItems; } }
 
         public Analysis(ApplicationDbContext context)
         {
@@ -32,11 +32,11 @@ namespace Brehns_Maintance_App.Services
             {
                 if(project.Complete == true)
                 {
-                    completed.Add(project);
+                    completedItems.Add(project);
                 }
                 else
                 {
-                    incomplete.Add(project);
+                    incompleteItems.Add(project);
                 }
             }
         }

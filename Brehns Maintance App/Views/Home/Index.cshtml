@@ -1,10 +1,37 @@
-﻿@model Brehns_Maintance_App.Services.Analysis;
+﻿@model Brehns_Maintance_App.Services.Analysis
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4"> Welcome  </h1>
-    <a class="nav-link text-primary" asp-area="" asp-controller="Projects" asp-action="Index"> View Projects </a>
-
+    <h1 class="display-4"> Status of Projects </h1>
+    <a class="nav-link text-primary" style="font-size: 20px;" asp-area="" asp-controller="Projects" asp-action="Index"> View Projects </a>
+    <div class="cotainer">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2> Incomplete Items </h2>
+                <ul class="list-group">
+                    @foreach (var item in Model.Incomplete)
+                    {
+                        <li class="list-group-item active"> @Html.DisplayTextFor(modelItem => item.Description)</li>
+                        <ul class="list-group">
+                            <li class="list-group-item"> @Html.DisplayNameFor(modelItem => item.Complete): @Html.DisplayTextFor(modelItem => item.Complete) </li>
+                        </ul>
+                    }
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <h2> Completed Items </h2>
+                <ul class="list-group">
+                    @foreach (var item in Model.Completed)
+                    {
+                        <li class="list-group-item active"> @Html.DisplayTextFor(modelItem => item.Description)</li>
+                        <ul class="list-group">
+                            <li class="list-group-item"> @Html.DisplayNameFor(modelItem => item.Complete): @Html.DisplayTextFor(modelItem => item.Complete) </li>
+                        </ul>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>   
 </div>
