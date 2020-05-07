@@ -9,45 +9,75 @@
 <p>
     <a asp-action="Create">Create New Item</a>
 </p>
-<table class="table table-striped">
-    <thead class="thead-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Priorty)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Amount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Complete)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Priorty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayTextFor(modelItem => item.Complete)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+            <form>
+                <div class="form-group">
+                    <h6> Select Bottom of Price Range </h6>
+                    <select id="priceLow">
+                        <option value="0"> $0 </option>
+                        <option value="50"> $50 </option>
+                        <option value="100"> $100 </option>
+                        <option value="150"> $150 </option>
+                        <option value="200"> $200+</option>
+                    </select>
+                    <h6> Select Top of Price Range </h6>
+                    <select id="priceHigh">
+                        <option value="50"> $50 </option>
+                        <option value="100"> $100 </option>
+                        <option value="150"> $150 </option>
+                        <option value="200"> $200+</option>
+                    </select>
+                    <button onclick="GetInputsToSort()" type="button" class="btn btn-primary"> Filter </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-sm-10">
+            <table class="table table-striped" id="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Priorty)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Complete)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td id="descr">
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                            <td id="pri">
+                                @Html.DisplayFor(modelItem => item.Priorty)
+                            </td>
+                            <td id="amt">
+                                @Html.DisplayFor(modelItem => item.Amount)
+                            </td>
+                            <td id="com">
+                                @Html.DisplayTextFor(modelItem => item.Complete)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="~/js/Sort.js"></script>
