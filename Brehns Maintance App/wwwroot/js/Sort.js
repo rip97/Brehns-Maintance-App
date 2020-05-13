@@ -36,7 +36,7 @@ function sortByPri(amtLow, amtHigh)
         val = Number(val);
         amtLow = Number(amtLow);
         amtHigh = Number(amtHigh);
-        if (val > amtHigh  || val < amtLow ){
+        if (val > amtHigh  && val < amtLow ){
 
             rows[i].style.display = "none";
         }
